@@ -11,9 +11,10 @@ interface Balance {
 interface TransactionFormatted {
   id: string;
   title: string;
-  type: string;
+  type: 'income' | 'outcome';
   value: number;
-  category: string;
+  // category: string;
+  category: { id: string; title: string };
 }
 
 @EntityRepository(Transaction)
@@ -49,7 +50,10 @@ class TransactionsRepository extends Repository<Transaction> {
         title: transaction.title,
         type: transaction.type,
         value: transaction.value,
-        category: transaction.category.title,
+        category: {
+          id: transaction.category.id,
+          title: transaction.category.title,
+        },
       }));
     });
 

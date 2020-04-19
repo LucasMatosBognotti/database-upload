@@ -13,7 +13,6 @@ interface TransactionFormatted {
   title: string;
   type: 'income' | 'outcome';
   value: number;
-  // category: string;
   category: { id: string; title: string };
 }
 
@@ -59,6 +58,20 @@ class TransactionsRepository extends Repository<Transaction> {
 
     return transactions;
   }
+
+  /*
+  public async getTransactions(): Promise<TransactionFormatted[]> {
+    const transactionsRepository = getRepository(Transaction);
+
+    // Deve-se usar o 'relations' com o campo da tabela atual que você deu join em models
+    const transactions = await transactionsRepository.find({
+      select: ['id', 'title', 'value', 'type'],
+      relations: ['category'],
+    });
+
+    return transactions;
+  }
+  */
 }
 
 export default TransactionsRepository;

@@ -35,11 +35,6 @@ export default class CreateTransactions1587073345438
             isNullable: false,
           },
           {
-            name: 'category',
-            type: 'varchar',
-            isNullable: true,
-          },
-          {
             name: 'category_id',
             type: 'uuid',
             isNullable: true,
@@ -63,7 +58,7 @@ export default class CreateTransactions1587073345438
         columnNames: ['category_id'],
         referencedColumnNames: ['id'],
         referencedTableName: 'categories',
-        onDelete: 'SET NULL',
+        onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
       }),
     );
